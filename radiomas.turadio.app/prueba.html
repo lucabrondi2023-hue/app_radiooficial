@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RADIO MAS 104.9 Tierra del Fuego</title>
+  <!-- Marco borroso estilo Glass -->
+
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Icono y estilos -->
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="all.min.css" />
+
+  <!-- Librerías -->
+  <script src="jquery-3.6.0.min.js"></script>
+  <script type="module" src="pwa-install.bundle.js"></script>
+  <script src="lunaradio-sincors.js"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6ad5b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Fondos -->
+  <div id="bg1" class="bg-fade"></div>
+  <div id="bg2" class="bg-fade" style="opacity:0;"></div>
+
+  <main>
+   <!-- Reproductor con fondo borroso -->
+    <!-- Reproductor con fondo borroso -->
+<div class="radio-container">
+  <div class="glass-frame"></div> <!-- Fondo borroso -->
+  <div id="lunaradio"></div>      <!-- Reproductor real -->
+</div>
+
+<!-- Accesos rápidos / Redes sociales -->
+<div class="action-grid" aria-label="Accesos rápidos">
+  <div class="social-minimal" aria-label="Redes sociales">
+    <a href="https://www.facebook.com/radiomas104.9" class="sm-link" aria-label="Facebook">
+      <div class="sm-btn sm-facebook"><i class="fab fa-facebook-f"></i><span class="sm-tip">Facebook</span></div>
+    </a>
+    <a href="https://www.instagram.com/radiomas104.9" class="sm-link" aria-label="Instagram">
+      <div class="sm-btn sm-instagram"><i class="fab fa-instagram"></i><span class="sm-tip">Instagram</span></div>
+    </a>
+    <a href="https://wa.me/5492964555666" class="sm-link" aria-label="WhatsApp">
+      <div class="sm-btn sm-whatsapp"><i class="fab fa-whatsapp"></i><span class="sm-tip">WhatsApp</span></div>
+    </a>
+    <a href="https://www.tiktok.com/@radiomas104.9" class="sm-link" aria-label="TikTok">
+      <div class="sm-btn sm-tiktok"><i class="fab fa-tiktok"></i><span class="sm-tip">TikTok</span></div>
+    </a>
+    <a href="https://www.youtube.com/@radiomas104.9" class="sm-link" aria-label="YouTube">
+      <div class="sm-btn sm-youtube"><i class="fab fa-youtube"></i><span class="sm-tip">YouTube</span></div>
+    </a>
+    <a href="https://x.com/radiomas1049" class="sm-link" aria-label="X">
+      <div class="sm-btn sm-x"><i class="fab fa-x-twitter"></i><span class="sm-tip">X</span></div>
+    </a>
+    <a href="indextv.html" class="sm-link" aria-label="TV">
+      <div class="sm-btn sm-tv"><i class="fa-solid fa-tv"></i><span class="sm-tip">TV</span></div>
+    </a>
+    <a href="#" id="pwaInstallBtn" class="sm-link">
+      <div class="sm-btn sm-download" title="Instalar o Descargar App">
+        <i class="fa-solid fa-download"></i>
+        <span class="sm-tip">Descargar App</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+    <!-- Footer / Powered by -->
+    <p class="powered">
+      <a href="#" target="_blank">RADIO + 104.9 DESDE 2025® – Tu Radio En Internet</a>
+    </p>
+
+    <!-- Componente PWA -->
+    <pwa-install
+      name="Instalar app oficial"
+      description="Como si fuera una app real, pero más liviana"
+      icon="logo.png"
+      install-description="Agregala a tu dispositivo ahora"
+      use-local-storage="true"
+      manifest-url="manifest.json"
+      disable-screenshots="true"
+      disable-install-description="false"
+      style="--pwa-install-bg-color: black; --pwa-install-color: white;">
+    </pwa-install>
+    
+  </main>
+
+  <!-- Scripts principales -->
+  <script>
+    $(document).ready(function () {
+      $('#lunaradio').lunaradio({
+        userinterface: 'big',
+        backgroundcolor: 'rgba(0,0,0,0)',
+        fontcolor: '#ffffff',
+        hightlightcolor: '#ff0000',
+        fontname: 'Roboto',
+        radioname: 'Radio en vivo!',
+        scroll: 'true',
+        coverimage: 'logo.png',
+        onlycoverimage: 'true',
+        coverstyle: 'animated',
+        usevisualizer: 'real',
+        visualizertype: '8',
+        itunestoken: '',
+        metadatatechnic: 'stream-icy-meta',
+        ownmetadataurl: '',
+        streamurl: 'https://server.streamcasthd.com/8738/stream',
+        streamtype: 'shoutcast2',
+        shoutcastpath: '',
+        shoutcastid: '1',
+        metadatainterval: 20000,
+        volume: 100,
+        debug: 'false'
+      });
+    });
+  </script>
+
+  <!-- PWA y scripts locales -->
+  <script src="pwa.js"></script>
+  <script src="main.js"></script>
+
+  <!-- Cloudflare Insights -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+    data-cf-beacon='{"version":"2024.11.0","token":"ea2c984bf2b94749918235b73dc430b8","r":1}' crossorigin="anonymous">
+  </script>
+</body>
+</html>

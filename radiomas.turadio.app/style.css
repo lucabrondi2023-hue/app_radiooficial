@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  color: white;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.bg-fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 2s ease-in-out;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+#lunaradio {
+  width: 100%;
+  max-width: 520px;
+  height: 500px;
+  margin: 1rem auto 2rem auto;
+  z-index: 10;
+}
+
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.social-icons a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.powered {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.powered a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  #lunaradio {
+    width: 95vw;
+    height: 480px;
+  }
+
+  .social-icons a {
+    font-size: 1.7rem;
+  }
+
+  .powered {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  #lunaradio {
+    height: 420px;
+  }
+
+  .powered {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+}
+#lunaradiobuttonanalyzer {
+  display:none;
+}
+#lunaradioiconlive {
+  display:none;
+}
+#lunaradiocoverwrapper {
+  border-radius:15px; 
+  pointer-events: auto; 
+  pointer-events: none;
+}
+
+
+/*---------------------------------------*/
+
+/* ====== GRID / CONTENEDOR ====== */
+.social-minimal{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  padding:6px 8px;
+  /* si querés fondo oscuro pero semi-transparente:
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  border-radius:12px;
+  */
+}
+
+/* ====== ENLACE ====== */
+.sm-link { text-decoration:none; }
+
+/* ====== BOTÓN ====== */
+.sm-btn{
+  width:44px;
+  height:44px;
+  border-radius:12px;            /* esquinas redondeadas, más minimal */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.03);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  position:relative;
+  overflow:visible;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ícono fontawesome dentro */
+.sm-btn i { font-size:16px; color:#fff; line-height:1; }
+
+/* svg icons */
+.sm-svg { width:18px; height:18px; fill:white; }
+
+/* tooltip simple (aparece arriba) */
+.sm-tip{
+  position:absolute;
+  top:-34px;
+  left:50%;
+  transform:translateX(-50%) scale(.9);
+  background:rgba(0,0,0,0.7);
+  color:#fff;
+  font-size:11px;
+  padding:6px 8px;
+  border-radius:8px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+  white-space:nowrap;
+  box-shadow:0 6px 16px rgba(0,0,0,0.5);
+}
+
+.sm-btn {
+  background-color: #28a745;  /* Este es el color actual de fondo */
+  color: #fff;
+}
+
+.radio-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px; /* espacio para que no toque los botones */
+}
+
+.glass-frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 470px;
+  height: 660px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+#lunaradio {
+  position: relative;
+  z-index: 2;
+}
+
+.action-grid {
+  position: relative;
+  z-index: 5; /* aseguramos que los botones estén por encima */
+}
+
+
+
+
+/* visible on hover/focus */
+.sm-btn:hover, .sm-btn:focus{
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  background: rgba(255,255,255,0.035);
+}
+.sm-btn:hover .sm-tip, .sm-btn:focus .sm-tip{
+  opacity:1;
+  transform:translateX(-50%) scale(1);
+}
+
+/* ====== COLOR VARIANTS (subtiles) ====== */
+.sm-facebook{ background: linear-gradient(180deg, rgba(24,119,242,0.95), rgba(24,119,242,0.9)); border-color: rgba(24,119,242,0.12); }
+.sm-instagram{ background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); border-color: rgba(0,0,0,0.08); }
+.sm-whatsapp{ background: linear-gradient(180deg, rgba(37,211,102,0.95), rgba(37,211,102,0.9)); border-color: rgba(37,211,102,0.12); }
+.sm-tiktok{ background: rgba(0,0,0,0.85); border-color: rgba(255,255,255,0.03); }
+.sm-youtube{ background: linear-gradient(180deg, rgba(255,0,0,0.95), rgba(220,0,0,0.9)); border-color: rgba(255,0,0,0.12); }
+.sm-x{ background: rgba(20,20,20,0.9); border-color: rgba(255,255,255,0.04); }
+.sm-tv{ background: linear-gradient(180deg, rgba(30,144,255,0.95), rgba(13,110,253,0.9)); border-color: rgba(30,144,255,0.10); }
+.sm-roblox{ background: linear-gradient(180deg, rgba(255,71,87,0.95), rgba(220,40,60,0.9)); border-color: rgba(255,71,87,0.12); }
+.sm-spotify{ background: linear-gradient(180deg, rgba(29,185,84,0.95), rgba(25,168,84,0.9)); border-color: rgba(29,185,84,0.12); }
+.sm-discord{ background: linear-gradient(180deg, rgba(88,101,242,0.95), rgba(72,86,200,0.9)); border-color: rgba(88,101,242,0.12); }
+
+/* ====== subtle focus for keyboard users ====== */
+.sm-link:focus .sm-btn, .sm-btn:focus {
+  outline: 2px solid rgba(255,255,255,0.06);
+  outline-offset: 3px;
+}
+
+/* ====== responsive ====== */
+@media (max-width:440px){
+  .sm-btn{ width:40px; height:40px; border-radius:10px; }
+  .sm-btn i{ font-size:14px; }
+  .sm-svg{ width:16px; height:16px; }
+  .sm-tip{ top:-30px; font-size:10px; padding:5px 7px; }
+}
+

@@ -1,0 +1,19 @@
+{
+  "name": "Radio Mas 104.9 Tierra del Fuego",
+  "short_name": "Radio Mas",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "Escuchá Radio Mas 104.9 desde cualquier lugar. ¡Instalá la app para acceder fácil y rápido!",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "es-AR"
+}

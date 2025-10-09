@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- Mirrored from radiomas.turadio.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Oct 2025 14:30:42 GMT -->
+<head>
+  <meta charset="UTF-8" />
+<meta http-equiv="Pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RADIO MAS 104.9 Tierra del Fuego</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="all.min.css" />
+  <script src="jquery-3.6.0.min.js"></script>
+  <script type="module" src="pwa-install.bundle.js"></script>
+  <script src="lunaradio-sincors.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+  <div id="bg1" class="bg-fade"></div>
+  <div id="bg2" class="bg-fade" style="opacity: 0;"></div>
+  <main>
+    <div id="lunaradio"></div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/radiomas104.9"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/radiomas104.9"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/5492964555666"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@radiomas104.9"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.youtube.com/@radiomas104.9"><i class="fab fa-youtube"></i></a>
+      <a href="https://x.com/radiomas1049"><i class="fab fa-x-twitter"></i></a>
+		  <a href="indextv.html"><i class="fa-solid fa-tv"></i></a>
+      <a href="#" id="pwaInstallBtn" class="fa-solid fa-download" title="Instalar o Descargar App"></a>
+    </div>
+    <p class="powered">
+      <a href="#" target="_blank">
+        RADIO + 104.9 DESDE 2025® – Tu Radio En Internet
+      </a>
+    </p>
+    <pwa-install
+      name="Instalar app oficial"
+      description="Como si fuera una app real, pero más liviana"
+      icon="logo.png"
+      install-description="Agregala a tu dispositivo ahora"
+      use-local-storage="true"
+      manifest-url="manifest.json"
+      disable-screenshots="true"
+      disable-install-description="false"
+      style="--pwa-install-bg-color: black; --pwa-install-color: white;">
+    </pwa-install>
+  </main>
+  <script>
+    $(document).ready(function () {
+      $('#lunaradio').lunaradio({
+        userinterface: 'big',
+        backgroundcolor: 'rgba(0,0,0,0)',
+        fontcolor: '#ffffff',
+        hightlightcolor: '#ff0000',
+        fontname: 'Roboto',
+        radioname: 'Radio en vivo!',
+        scroll: 'true',
+        coverimage: 'logo.png',
+        onlycoverimage: 'true',
+        coverstyle: 'animated',
+        usevisualizer: 'real',
+        visualizertype: '8',
+        itunestoken: '',
+        metadatatechnic: 'stream-icy-meta',
+        ownmetadataurl: '',
+        streamurl: 'https://server.streamcasthd.com/8738/stream',
+        streamtype: 'shoutcast2',
+        shoutcastpath: '',
+        shoutcastid: '1',
+        metadatainterval: 20000,
+        volume: 100,
+        debug: 'false'
+      });
+    });
+  </script>
+
+<a href="#" id="pwaInstallBtn" class="fa-solid fa-download" title="Instalar o Descargar App"></a>
+
+<script src="pwa-install.bundle.js"></script>
+<script src="pwa.js"></script>
+
+<script src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"ea2c984bf2b94749918235b73dc430b8","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from radiomas.turadio.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Oct 2025 14:30:45 GMT -->
+</html>
