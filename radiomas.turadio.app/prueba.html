@@ -22,218 +22,50 @@
   <script src="https://kit.fontawesome.com/a2e0e6ad5b.js" crossorigin="anonymous"></script>
 
   <style>
-    /* ==== TARJETA TERMINAL (Uiverse.io by ilkhoeri) ==== */
-    .card {
-      padding: 1rem;
-      overflow: hidden;
-      border: 1px solid #c5c5c5;
-      border-radius: 12px;
-      background-color: #d9d9d92f;
-      backdrop-filter: blur(8px);
-      min-width: 200px;
-      width: 95%;         /* se adapta a pantalla */
-      max-width: 600px;   /* ancho máximo para desktop */
-      margin: 0 auto 20px;
-      display: block;
-    }
-
-    .wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      position: relative;
-      z-index: 10;
-      border: 0.5px solid #525252;
-      border-radius: 8px;
-      overflow: hidden;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .terminal {
-      display: flex;
-      flex-direction: column;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-    }
-
-    .head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
-      min-height: 40px;
-      padding-inline: 12px;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      background-color: #202425;
-    }
-
-    .title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      height: 2.5rem;
-      user-select: none;
-      font-weight: 600;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: #8e8e8e;
-    }
-
-    .title > svg {
-      height: 18px;
-      width: 18px;
-      margin-top: 2px;
-      color: #006adc;
-    }
-
-    .copy_toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem;
-      border: 0.65px solid #c1c2c5;
-      margin-left: auto;
-      border-radius: 6px;
-      background-color: #202425;
-      color: #8e8e8e;
-      cursor: pointer;
-    }
-
-    .copy_toggle > svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .copy_toggle:active > svg > path,
-    .copy_toggle:focus-within > svg > path {
-      animation: clipboard-check 500ms linear forwards;
-    }
-
-    .body {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border-bottom-right-radius: 8px;
-      border-bottom-left-radius: 8px;
-      overflow-x: auto;
-      padding: 1rem;
-      line-height: 19px;
-      color: white;
-      background-color: black;
-      white-space: pre-wrap; /* para móviles, saltos de línea */
-      word-break: break-word;
-    }
-
-    .pre {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      text-wrap: nowrap;
-      white-space: pre;
-      background-color: transparent;
-      overflow: hidden;
-      box-sizing: border-box;
-      font-size: 16px;
-    }
-
-    .pre code:nth-child(1) { color: #575757; }
-    .pre code:nth-child(2) { color: #e34ba9; }
-
-    .cmd {
-      height: 19px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-    }
-
-    .cmd::before {
-      content: attr(data-cmd);
-      display: block;
-      white-space: pre-wrap;
-      overflow: hidden;
-      animation: typewriter 5s steps(60, end) forwards;
-      width: 0;  /* esencial para animación */
-    }
-
-    .cmd::after {
-      content: "";
-      position: relative;
-      display: block;
-      height: 100%;
-      overflow: hidden;
-      background-color: transparent;
-      border-right: 0.15em solid #e34ba9;
-      animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
-    }
-
-    @keyframes blinking {
-      20%, 80% { transform: scaleY(1); }
-      50% { transform: scaleY(0); }
-    }
-    @keyframes cursor {
-      50% { border-right-color: transparent; }
-    }
-    @keyframes typewriter {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes clipboard-check {
-      100% {
-        color: #fff;
-      }
-    }
+    /* ==== TARJETA TERMINAL ==== */
+    .card { padding:1rem; overflow:hidden; border:1px solid #c5c5c5; border-radius:12px; background-color:#d9d9d92f; backdrop-filter:blur(8px); min-width:200px; width:95%; max-width:600px; margin:0 auto 20px; display:block; }
+    .wrap { display:flex; flex-direction:column; gap:1rem; position:relative; z-index:10; border:0.5px solid #525252; border-radius:8px; overflow:hidden; width:100%; box-sizing:border-box; }
+    .terminal { display:flex; flex-direction:column; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .head { display:flex; align-items:center; justify-content:space-between; min-height:40px; padding-inline:12px; background-color:#202425; border-top-left-radius:8px; border-top-right-radius:8px; }
+    .title { display:flex; align-items:center; gap:8px; height:2.5rem; user-select:none; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#8e8e8e; }
+    .copy_toggle { display:flex; align-items:center; justify-content:center; padding:0.25rem; border:0.65px solid #c1c2c5; margin-left:auto; border-radius:6px; background-color:#202425; color:#8e8e8e; cursor:pointer; }
+    .body { display:flex; flex-direction:column; padding:1rem; line-height:19px; color:white; background-color:black; white-space:pre-wrap; word-break:break-word; border-bottom-left-radius:8px; border-bottom-right-radius:8px; }
+    .pre { display:flex; flex-direction:row; align-items:center; white-space:pre; background-color:transparent; overflow:hidden; box-sizing:border-box; font-size:16px; }
+    .cmd { height:19px; position:relative; display:flex; align-items:center; flex-direction:row; }
+    .cmd::before { content: attr(data-cmd); display:block; white-space:pre-wrap; overflow:hidden; animation:typewriter 5s steps(60,end) forwards; width:0; }
+    .cmd::after { content:""; display:block; height:100%; border-right:0.15em solid #e34ba9; animation:cursor 0.5s step-end infinite alternate, blinking 0.5s infinite; }
+    @keyframes blinking { 20%,80%{ transform:scaleY(1);} 50%{ transform:scaleY(0);} }
+    @keyframes cursor { 50%{ border-right-color: transparent; } }
+    @keyframes typewriter { from{width:0;} to{width:100%;} }
 
     /* ==== Radio y redes ==== */
-    .radio-container {
-      width: 95%;
-      max-width: 600px;
-      margin: 20px auto;
-    }
+    .radio-container { width:95%; max-width:600px; margin:20px auto; }
+    .action-grid { width:95%; max-width:600px; margin:20px auto; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
+    .social-minimal a { flex:1 0 40px; max-width:50px; }
+    .powered { width:95%; max-width:600px; margin:20px auto; text-align:center; font-size:14px; color:#ccc; }
 
-    .action-grid {
-      width: 95%;
-      max-width: 600px;
-      margin: 20px auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    /* ==== CHAT WIDGET ==== */
+    #chat-widget { position:fixed; right:20px; bottom:20px; width:320px; max-width:calc(100% - 40px); border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,0.4); backdrop-filter:blur(8px); background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.06); overflow:hidden; z-index:1000; display:flex; flex-direction:column; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#eef0f2; }
+    #chat-header { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:rgba(0,0,0,0.35); border-bottom:1px solid rgba(255,255,255,0.03); gap:8px; }
+    #chat-header .title { font-weight:600; font-size:14px; color:#fff; display:flex; align-items:center; gap:8px; }
+    #chat-messages { height:260px; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:8px; scroll-behavior:smooth; background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01)); }
+    .msg { max-width:80%; padding:8px 10px; border-radius:10px; font-size:13px; line-height:1.15; box-shadow:0 2px 6px rgba(0,0,0,0.25); word-break:break-word; }
+    .msg.me { background: rgba(255,255,255,0.06); align-self:flex-end; color:#fff; }
+    .msg.other { background: rgba(255,255,255,0.03); align-self:flex-start; color:#fff; }
+    .msg.typing { opacity:0.85; font-style:italic; }
+    .msg .meta { display:block; font-size:11px; color:#cfcfcf; margin-top:6px; opacity:0.9; }
+    #chat-input { display:flex; gap:8px; padding:10px; align-items:center; border-top:1px solid rgba(255,255,255,0.03); background: rgba(0,0,0,0.25); }
+    #chat-input input[type="text"] { flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background: rgba(0,0,0,0.15); color:#fff; outline:none; font-size:13px; }
+    #chat-input button { background: linear-gradient(180deg,#ff3b3b,#d40000); border:none; color:white; padding:8px 10px; border-radius:8px; cursor:pointer; font-weight:600; }
+    #chat-quick { padding:8px 10px; border-top:1px solid rgba(255,255,255,0.03); display:flex; gap:6px; flex-wrap:wrap; background:rgba(0,0,0,0.12); }
 
-    .social-minimal a {
-      flex: 1 0 40px;  /* botón pequeño en móvil */
-      max-width: 50px;
-    }
+    #chat-toggle-btn { position:fixed; right:20px; bottom:20px; width:56px; height:56px; border-radius:50%; background:linear-gradient(180deg,#ff3b3b,#d40000); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(212,0,0,0.25); z-index:999; cursor:pointer; color:white; border:none; outline:none; font-size:22px; }
 
-    .powered {
-      width: 95%;
-      max-width: 600px;
-      margin: 20px auto;
-      text-align: center;
-      font-size: 14px;
-      color: #ccc;
-    }
+    .chat-open #chat-toggle-btn { display:none; }
+    .chat-hidden #chat-widget { display:none; }
 
-    /* ==== Responsive ==== */
-    @media screen and (max-width: 480px) {
-      .card, .radio-container, .action-grid, .powered {
-        width: 95%;
-      }
-      .pre {
-        font-size: 14px;
-      }
-      .title {
-        font-size: 14px;
-      }
-      .copy_toggle > svg {
-        width: 18px;
-        height: 18px;
-      }
-    }
+    a.chat-link { color:#ffd; text-decoration:underline; }
+    @media screen and (max-width:420px) { #chat-widget { right:12px; left:12px; bottom:12px; width:auto; max-width:none; border-radius:12px; } #chat-messages { height:220px; } }
   </style>
 </head>
 
@@ -243,23 +75,19 @@
   <div id="bg2" class="bg-fade" style="opacity:0;"></div>
 
   <main>
-    <!-- Bloque de terminal -->
+    <!-- Terminal -->
     <div class="card">
       <div class="wrap">
         <div class="terminal">
           <hgroup class="head">
             <p class="title">
-              <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 15L10 12L7 9M13 15H17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z"></path>
               </svg>
               Terminal
             </p>
-            <button class="copy_toggle" type="button">
-              <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="copy_toggle" title="Copiar texto">
+              <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
                 <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
               </svg>
@@ -276,23 +104,23 @@
       </div>
     </div>
 
-    <!-- Reproductor con fondo borroso -->
+    <!-- Reproductor -->
     <div class="radio-container">
       <div class="glass-frame"></div>
       <div id="lunaradio"></div>
     </div>
 
     <!-- Redes sociales -->
-    <div class="action-grid" aria-label="Accesos rápidos">
-      <div class="social-minimal" aria-label="Redes sociales">
-        <a href="https://www.facebook.com/radiomas104.9" class="sm-link"><div class="sm-btn sm-facebook"><i class="fab fa-facebook-f"></i></div></a>
-        <a href="https://www.instagram.com/radiomas104.9" class="sm-link"><div class="sm-btn sm-instagram"><i class="fab fa-instagram"></i></div></a>
-        <a href="https://wa.me/5492964555666" class="sm-link"><div class="sm-btn sm-whatsapp"><i class="fab fa-whatsapp"></i></div></a>
-        <a href="https://www.tiktok.com/@radiomas104.9" class="sm-link"><div class="sm-btn sm-tiktok"><i class="fab fa-tiktok"></i></div></a>
-        <a href="https://www.youtube.com/@radiomas104.9" class="sm-link"><div class="sm-btn sm-youtube"><i class="fab fa-youtube"></i></div></a>
-        <a href="https://x.com/radiomas1049" class="sm-link"><div class="sm-btn sm-x"><i class="fab fa-x-twitter"></i></div></a>
-        <a href="indextv.html" class="sm-link"><div class="sm-btn sm-tv"><i class="fa-solid fa-tv"></i></div></a>
-        <a href="#" id="pwaInstallBtn" class="sm-link"><div class="sm-btn sm-download"><i class="fa-solid fa-download"></i></div></a>
+    <div class="action-grid">
+      <div class="social-minimal">
+        <a href="https://www.facebook.com/radiomas104.9" target="_blank" rel="noopener"><div class="sm-btn sm-facebook"><i class="fab fa-facebook-f"></i></div></a>
+        <a href="https://www.instagram.com/radiomas104.9" target="_blank" rel="noopener"><div class="sm-btn sm-instagram"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://wa.me/5492964555666" target="_blank" rel="noopener"><div class="sm-btn sm-whatsapp"><i class="fab fa-whatsapp"></i></div></a>
+        <a href="https://www.tiktok.com/@radiomas104.9" target="_blank" rel="noopener"><div class="sm-btn sm-tiktok"><i class="fab fa-tiktok"></i></div></a>
+        <a href="https://www.youtube.com/@radiomas104.9" target="_blank" rel="noopener"><div class="sm-btn sm-youtube"><i class="fab fa-youtube"></i></div></a>
+        <a href="https://x.com/radiomas1049" target="_blank" rel="noopener"><div class="sm-btn sm-x"><i class="fab fa-x-twitter"></i></div></a>
+        <a href="indextv.html"><div class="sm-btn sm-tv"><i class="fa-solid fa-tv"></i></div></a>
+        <a href="#" id="pwaInstallBtn"><div class="sm-btn sm-download"><i class="fa-solid fa-download"></i></div></a>
       </div>
     </div>
 
@@ -313,28 +141,119 @@
     </pwa-install>
   </main>
 
+  <!-- Chat Widget -->
+  <div id="chat-widget" aria-hidden="false" role="region" aria-label="Soporte - Chat bot">
+    <div id="chat-header" role="toolbar" aria-label="Encabezado del chat">
+      <div class="title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Soporte · Radio + 104.9
+      </div>
+      <div class="actions">
+        <button id="clear-chat" title="Borrar mensajes" style="background:none;border:0;color:#cfcfcf;cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+        <button id="close-chat" title="Minimizar chat" style="background:none;border:0;color:#cfcfcf;cursor:pointer;"><i class="fa-solid fa-chevron-down"></i></button>
+      </div>
+    </div>
+    <div id="chat-messages" aria-live="polite" aria-atomic="false"></div>
+    <div id="chat-quick"></div>
+    <div id="chat-input">
+      <input type="text" id="chat-text" placeholder="¿En qué te puedo ayudar? Ej: 'no se escucha'..." />
+      <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <button id="chat-toggle-btn"><i class="fa-solid fa-headset"></i></button>
+
+  <!-- SCRIPTS -->
   <script>
-    $(document).ready(function () {
+    // ===== LUNARADIO =====
+    $(document).ready(() => {
       $('#lunaradio').lunaradio({
-        userinterface: 'big',
-        backgroundcolor: 'rgba(0,0,0,0)',
-        fontcolor: '#ffffff',
-        hightlightcolor: '#ff0000',
-        fontname: 'Roboto',
-        radioname: 'Radio en vivo!',
-        scroll: 'true',
-        coverimage: 'logo.png',
-        onlycoverimage: 'true',
-        coverstyle: 'animated',
-        usevisualizer: 'real',
-        visualizertype: '8',
-        streamurl: 'https://server.streamcasthd.com/8738/stream',
-        streamtype: 'shoutcast2',
-        shoutcastid: '1',
-        metadatainterval: 20000,
-        volume: 100
+        userinterface:'big',
+        backgroundcolor:'rgba(0,0,0,0)',
+        fontcolor:'#ffffff',
+        hightlightcolor:'#ff0000',
+        fontname:'Roboto',
+        radioname:'Radio en vivo!',
+        scroll:'true',
+        coverimage:'logo.png',
+        onlycoverimage:'true',
+        coverstyle:'animated',
+        usevisualizer:'real',
+        visualizertype:'8',
+        streamurl:'https://server.streamcasthd.com/8738/stream',
+        streamtype:'shoutcast2',
+        shoutcastid:'1',
+        metadatainterval:20000,
+        volume:100
       });
     });
+
+    // ===== CHAT BOT =====
+    (function(){
+      const SUPPORT_EMAIL='radiomas104.9@gmail.com', WHATSAPP_NUMBER='5492964555666', BOT_NAME='Soporte Radio + 104.9', STORAGE_KEY='radio_support_bot_v1', STATE_KEY='radio_chat_state_v1';
+      const chatWidget=document.getElementById('chat-widget'), chatMessages=document.getElementById('chat-messages'), chatText=document.getElementById('chat-text'), chatSend=document.getElementById('chat-send');
+      const clearBtn=document.getElementById('clear-chat'), closeBtn=document.getElementById('close-chat'), toggleBtn=document.getElementById('chat-toggle-btn'), quickBox=document.getElementById('chat-quick');
+      let messages=[];
+      
+      const horaNow=()=>new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      const escapeHtml=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const linkify=t=>escapeHtml(t).replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,m=>`<a class="chat-link" href="mailto:${m}">${m}</a>`).replace(/(https?:\/\/[^\s]+)/g,m=>`<a class="chat-link" href="${m}" target="_blank" rel="noopener">${m}</a>`);
+
+      const showTyping=()=>{ const el=document.createElement('div'); el.className='msg other typing'; el.id='typing-indicator'; el.innerHTML=`<div class="text">...</div><span class="meta">${BOT_NAME}</span>`; chatMessages.appendChild(el); chatMessages.scrollTop=chatMessages.scrollHeight; };
+      const hideTyping=()=>{ const t=document.getElementById('typing-indicator'); if(t) t.remove(); };
+      const saveMessages=()=>localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+      const loadMessages=()=>{ try{ messages=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')||[] } catch(e){ messages=[] } };
+      const renderMessages=()=>{ chatMessages.innerHTML=''; messages.forEach(m=>{ const el=document.createElement('div'); el.className='msg '+(m.me?'me':'other'); el.innerHTML=`<div class="text">${linkify(m.text).replace(/\n/g,'<br>')}</div><span class="meta">${escapeHtml(m.name||BOT_NAME)} • ${m.time}</span>`; chatMessages.appendChild(el); }); chatMessages.scrollTop=chatMessages.scrollHeight; };
+      const renderQuick=(options=[])=>{ quickBox.innerHTML=''; if(!options.length) options=["Cómo escucho","No se escucha","Instalar app","Quiero un gmail"]; options.forEach(q=>{ const btn=document.createElement('button'); btn.type='button'; btn.className='quick'; btn.textContent=q; btn.style='background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 8px;border-radius:8px;color:#fff;cursor:pointer;font-size:13px'; quickBox.appendChild(btn); }); };
+
+      const intents=[
+        {patterns:/hola|buen[oa]s|hol[ao]/i,responses:["¡Hola! Soy tu soporte de Radio + 104.9. ¿En qué puedo ayudarte?"], quick:["Cómo escucho","No se escucha","Instalar app","Quiero un gmail"]},
+        {patterns:/escuch(ar|o)|stream|url|link/i,responses:["Podés escuchar desde el reproductor de la web. ¿Necesitás ayuda con el player?"], quick:["No se escucha","Recargar player"]},
+        {patterns:/no se escucha|sin sonido|silencio|mute/i,responses:["Verificá volumen del player y del dispositivo. Si sigue sin sonido, probá otro navegador o recarga la página."], quick:["Probé todo","Enviar reporte"]},
+        {patterns:/pwa|instal(ar|app)|descarg(ar|a)/i,responses:["Usá el botón de descarga en la web para instalar la app. ¿Querés una guía paso a paso?"], quick:["Guía instalación","No puedo instalar"]},
+        {patterns:/humano|operador|atenc(ió|ion)/i,responses:[`Podés contactarnos por WhatsApp: https://wa.me/${WHATSAPP_NUMBER} o por correo: ${SUPPORT_EMAIL}`], quick:["Abrir WhatsApp","Enviar email","Quiero un gmail"]},
+        {patterns:/horari(o|os)|programaci[oó]n/i,responses:["Transmisión 24/7. Consultá programación de programas específicos escribiendo su nombre."], quick:["Programación","DJ hoy"]},
+        {patterns:/graci(as)?|genial|perfecto/i,responses:["¡De nada! ¿Necesitás algo más?"], quick:["Volver al inicio","Quiero un gmail"]}
+      ];
+      const fallbackResponses=["Disculpá, no entendí. Seleccioná una opción rápida o escribí 'hablar con humano' para asistencia."];
+
+      const findIntent=text=>intents.find(i=>i.patterns.test(text))||null;
+
+      const queueMessage=(text,me=true)=>{ if(!text?.trim()) return; const msg={id:'m_'+Date.now(),time:horaNow(),text:text.trim(),name:me?'Tú':BOT_NAME,me}; messages.push(msg); saveMessages(); renderMessages(); if(me) processBot(text); };
+
+      const processBot=userText=>{
+        setTimeout(showTyping,120);
+        setTimeout(()=>{
+          hideTyping();
+          let intent=findIntent(userText), reply, quick;
+          if(intent){ reply=typeof intent.responses[0]==='function'? intent.responses[0](userText) : intent.responses[0]; quick=intent.quick||[]; } 
+          else { reply=fallbackResponses[0]; quick=["Hablar con humano","No se escucha","Instalar app"]; }
+
+          if(userText.toLowerCase().includes('gmail')){
+            reply=`El gmail de la radio es este: ${SUPPORT_EMAIL}\n(Hacé click para abrir tu cliente de correo)`;
+            quick=["Abrir WhatsApp","Volver al inicio"];
+          }
+
+          const botMsg={id:'b_'+Date.now(), time:horaNow(), text:reply, name:BOT_NAME, me:false};
+          messages.push(botMsg);
+          saveMessages();
+          renderMessages();
+          renderQuick(quick);
+        },700+Math.random()*700);
+      };
+
+      chatSend.addEventListener('click',()=>{ const t=chatText.value.trim(); if(!t) return; queueMessage(t,true); chatText.value=''; chatText.focus(); });
+      chatText.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); chatSend.click(); } });
+      clearBtn.addEventListener('click',()=>{ if(confirm('Borrar historial del chat?')){ messages=[]; saveMessages(); renderMessages(); } });
+      closeBtn.addEventListener('click',()=>{ document.body.classList.remove('chat-open'); document.body.classList.add('chat-hidden'); localStorage.setItem(STATE_KEY, JSON.stringify({minimized:true})); });
+      toggleBtn.addEventListener('click',()=>{ document.body.classList.remove('chat-hidden'); document.body.classList.add('chat-open'); localStorage.setItem(STATE_KEY, JSON.stringify({minimized:false})); setTimeout(()=>chatText.focus(),200); });
+      quickBox.addEventListener('click', e=>{ const btn=e.target.closest('button'); if(!btn) return; queueMessage(btn.textContent,true); });
+
+      loadMessages(); renderMessages(); renderQuick();
+      if(!messages.length) setTimeout(()=>{ queueMessage("¡Hola! Soy tu asistente de soporte. ¿En qué te puedo ayudar?",false); renderQuick(); },500);
+    })();
   </script>
 
   <script src="pwa.js"></script>
