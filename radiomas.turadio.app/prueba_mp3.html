@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notas — Reproductor</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e6ad5b.js" crossorigin="anonymous" defer></script>
+
+  <style>
+    :root{
+      --bg-1: #071529;
+      --bg-2: #02101f;
+      --muted: #bcd7f2;
+      --accent1: #1e90ff;
+      --accent2: #5cd6ff;
+      --glass: rgba(255,255,255,0.04);
+      --gap: 14px;
+      --maxw: 980px;
+      --logo-size: 56px;
+
+      --thumb-size: 76px;
+      --btn-size: 56px;
+      --play-size: 64px;
+      --vol-width: 110px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;color:#eaf7ff}
+    body{background:linear-gradient(180deg,var(--bg-1),var(--bg-2))}
+
+    .wrap{max-width:var(--maxw);margin:14px auto;padding:14px;display:flex;flex-direction:column;gap:14px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px}
+
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:var(--logo-size);height:var(--logo-size);border-radius:10px;overflow:hidden;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center}
+    .logo img{width:84%;height:84%;object-fit:contain}
+
+    h1{font-size:16px;margin:0;font-weight:800}
+
+    .actions{display:flex;align-items:center;gap:8px}
+    .primary-btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;padding:8px 12px;border-radius:10px;color:#02101f;font-weight:700;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+
+    .list{display:flex;flex-direction:column;gap:var(--gap)}
+
+    .item{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 28px rgba(2,8,23,0.6);transition:transform .12s ease}
+    .item:hover{transform:translateY(-6px)}
+
+    .thumb{width:var(--thumb-size);height:var(--thumb-size);border-radius:10px;overflow:hidden;background:var(--glass);flex:0 0 var(--thumb-size);display:flex;align-items:center;justify-content:center}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+
+    .meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+    .meta-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .title{font-size:15px;font-weight:800;color:#eaf7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .subtitle{font-size:13px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    .controls{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+    .controls-row{display:flex;align-items:center;gap:8px}
+
+    .btn{width:var(--btn-size);height:var(--btn-size);border-radius:12px;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#eaf7ff;font-size:22px;transition: transform .12s ease}
+    .btn:hover{transform:scale(1.1)}
+
+    .play{width:var(--play-size);height:var(--play-size);border-radius:14px;background:linear-gradient(180deg,var(--accent1),var(--accent2));color:#02101f;font-weight:800;font-size:28px;display:inline-flex;align-items:center;justify-content:center;transition: transform .12s ease}
+    .play:hover{transform:scale(1.08)}
+
+    .progress-wrap{flex:1;display:flex;flex-direction:column;gap:6px;min-width:160px}
+    .progress-bar{height:8px;border-radius:999px;background:rgba(255,255,255,0.03);overflow:hidden;cursor:pointer}
+    .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent1),var(--accent2));transition:width .06s linear}
+    .times{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+
+    .vol{width:var(--vol-width)}
+
+    .item.playing{outline:2px solid rgba(30,144,255,0.14)}
+
+    .empty{padding:30px;border-radius:12px;text-align:center;color:var(--muted);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02)}
+
+    .obs-friendly{background:transparent}
+    .obs-friendly .item{background:transparent;border:0;box-shadow:none}
+    .obs-friendly .logo{box-shadow:none}
+
+    @media (max-width:900px){:root{--thumb-size:64px;--btn-size:48px;--play-size:56px;--vol-width:90px}.wrap{padding:10px}}
+    @media (max-width:600px){.item{flex-direction:row;align-items:center;padding:10px}.meta-top{flex-direction:column;align-items:flex-start;gap:4px}.controls{align-items:flex-start;width:100%}.controls-row{justify-content:space-between;width:100%}.progress-wrap{order:3;width:100%}.thumb{flex:0 0 56px}}
+    @media (max-width:420px){:root{--thumb-size:48px;--btn-size:42px;--play-size:48px;--vol-width:70px}.title{font-size:14px}}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo" title="Logo de la emisora">
+          <img src="logo.png" alt="Logo" onerror="this.onerror=null;this.src='logo-fallback.png'" />
+        </div>
+        <div><h1>Notas — Reproductor</h1></div>
+      </div>
+      <div class="actions">
+        <button class="primary-btn" id="toggle-obs" title="Modo OBS (sin fondo)"><i class="fa-solid fa-eye-low-vision"></i></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="list" id="list"></section>
+      <div id="empty" class="empty" style="display:none">No hay archivos en la lista — agrega archivos al array <code>files</code></div>
+    </main>
+  </div>
+
+  <script>
+    const folder = 'notas/';
+    const files = [
+      { file: 'a1.mp3', title: 'Prueba', cover: 'notas/miranda.jpg' },
+    ];
+    const defaultCover = 'notas/covers/cover-default.png';
+    const list = document.getElementById('list');
+    const empty = document.getElementById('empty');
+    const pool = [];
+
+    function fmt(s){ if (!isFinite(s)) return '--:--'; s = Math.floor(s); const m = Math.floor(s/60); const sec = s%60; return `${m}:${String(sec).padStart(2,'0')}` }
+    if (!files.length){ empty.style.display='block' }
+
+    files.forEach((it, idx)=>{
+      const base = it.file.replace(/\.[^/.]+$/,'');
+      const url = folder + it.file;
+      const item = document.createElement('article'); item.className='item'; item.setAttribute('role','group'); item.setAttribute('aria-label', it.title || base);
+
+      // thumb
+      const thumb = document.createElement('div'); thumb.className='thumb';
+      const img = document.createElement('img'); img.alt = it.title || base;
+      const coverCandidates = it.cover?[it.cover]:[]; coverCandidates.push(folder+base+'.jpg', folder+base+'.png', defaultCover);
+      let tryIndex=0; img.src=coverCandidates[tryIndex]; img.onerror=()=>{tryIndex++; if(tryIndex<coverCandidates.length) img.src=coverCandidates[tryIndex];};
+      thumb.appendChild(img);
+
+      // meta
+      const meta = document.createElement('div'); meta.className='meta';
+      const metaTop = document.createElement('div'); metaTop.className='meta-top';
+      const title = document.createElement('div'); title.className='title'; title.textContent=it.title||base;
+      const subtitle = document.createElement('div'); subtitle.className='subtitle'; subtitle.textContent=it.file;
+      metaTop.appendChild(title); meta.appendChild(metaTop); meta.appendChild(subtitle);
+
+      // controls
+      const controls = document.createElement('div'); controls.className='controls';
+
+      // play button con emoji
+      const row1 = document.createElement('div'); row1.className='controls-row';
+      const btnPlay = document.createElement('button'); btnPlay.className='play'; btnPlay.title='Reproducir / Pausa'; btnPlay.innerHTML='🎵';
+      row1.appendChild(btnPlay);
+
+      // progress
+      const progressWrap = document.createElement('div'); progressWrap.className='progress-wrap';
+      const prog = document.createElement('div'); prog.className='progress-bar';
+      const fill = document.createElement('div'); fill.className='progress-fill'; prog.appendChild(fill);
+      const times = document.createElement('div'); times.className='times'; const cur = document.createElement('div'); cur.textContent='0:00'; const tot = document.createElement('div'); tot.textContent='--:--'; times.appendChild(cur); times.appendChild(tot);
+      progressWrap.appendChild(prog); progressWrap.appendChild(times);
+
+      // volumen y reinicio
+      const row2 = document.createElement('div'); row2.className='controls-row';
+      const muteBtn = document.createElement('button'); muteBtn.className='btn'; muteBtn.title='Silenciar / Restaurar'; muteBtn.innerHTML='🔊';
+      const vol = document.createElement('input'); vol.type='range'; vol.min=0; vol.max=1; vol.step=0.01; vol.value=1; vol.className='vol';
+      const replay = document.createElement('button'); replay.className='btn'; replay.title='Reiniciar'; replay.innerHTML='🔄';
+      row2.appendChild(muteBtn); row2.appendChild(vol); row2.appendChild(replay);
+
+      controls.appendChild(row1); controls.appendChild(progressWrap); controls.appendChild(row2);
+
+      // audio
+      const audio = document.createElement('audio'); audio.src=url; audio.preload='metadata'; audio.setAttribute('data-file', it.file);
+
+      item.appendChild(thumb); item.appendChild(meta); item.appendChild(controls); item.appendChild(audio); list.appendChild(item);
+      pool.push(audio);
+
+      // eventos
+      audio.addEventListener('loadedmetadata',()=>{tot.textContent=fmt(audio.duration); subtitle.textContent=`${it.file} • ${fmt(audio.duration)}`;});
+      audio.addEventListener('timeupdate',()=>{const pct=audio.duration?(audio.currentTime/audio.duration)*100:0; fill.style.width=pct+'%'; cur.textContent=fmt(audio.currentTime);});
+      prog.addEventListener('click',(e)=>{const rect=prog.getBoundingClientRect(); const x=e.clientX-rect.left; const pct=Math.max(0,Math.min(1,x/rect.width)); if(isFinite(audio.duration)) audio.currentTime=pct*audio.duration;});
+      vol.addEventListener('input',()=>{audio.volume=parseFloat(vol.value); updateVolumeIcon(muteBtn,audio);});
+      muteBtn.addEventListener('click',()=>{audio.muted=!audio.muted; updateVolumeIcon(muteBtn,audio);});
+
+      btnPlay.addEventListener('click',()=>{if(audio.paused){pauseAllExcept(audio); audio.play().catch(()=>{});}else{audio.pause();}});
+      replay.addEventListener('click',()=>{audio.currentTime=0; audio.play();});
+
+      audio.addEventListener('play',()=>{item.classList.add('playing'); btnPlay.innerHTML='⏸️';});
+      audio.addEventListener('pause',()=>{item.classList.remove('playing'); btnPlay.innerHTML='🎵';});
+      audio.addEventListener('ended',()=>{audio.currentTime=0; audio.pause();});
+
+      item.addEventListener('dblclick',()=>btnPlay.click());
+      item.addEventListener('keydown',(ev)=>{if(ev.code==='Space'){ev.preventDefault(); btnPlay.click();}});
+    });
+
+    function pauseAllExcept(current){ pool.forEach(a=>{if(a!==current&&!a.paused)a.pause();}); }
+    function updateVolumeIcon(btn,audio){ if(audio.muted||audio.volume===0){btn.innerHTML='🔇';}else if(audio.volume<0.5){btn.innerHTML='🔉';}else{btn.innerHTML='🔊';} }
+
+    const toggleObs = document.getElementById('toggle-obs');
+    toggleObs.addEventListener('click',()=>{document.body.classList.toggle('obs-friendly'); toggleObs.classList.toggle('active');});
+  </script>
+</body>
+</html>
