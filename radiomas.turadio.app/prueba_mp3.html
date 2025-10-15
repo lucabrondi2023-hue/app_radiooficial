@@ -92,10 +92,10 @@
         <div class="logo" title="Logo de la emisora">
           <img src="logo.png" alt="Logo" onerror="this.onerror=null;this.src='logo-fallback.png'" />
         </div>
-        <div><h1>Notas — Reproductor</h1></div>
+        <div><h1>Notas - Radio + 104.9</h1></div>
       </div>
       <div class="actions">
-        <button class="primary-btn" id="toggle-obs" title="Modo OBS (sin fondo)"><i class="fa-solid fa-eye-low-vision"></i></button>
+        <a href="prueba.html"><div class="primary-btn"><i class="fa-solid fa-film"></i></div></a>
       </div>
     </header>
 
@@ -108,8 +108,9 @@
   <script>
     const folder = 'notas/';
     const files = [
-      { file: 'a1.mp3', title: 'Prueba', cover: 'notas/miranda.jpg' },
-      { file: 'Rombola.mp3', title: 'Agustín Rombola en NO SOMOS NEUTRALES COM MOISES SOLORZA', cover: 'notas/rombola.jpg' },
+      { file: 'Rombola.mp3', title: 'Agustín Rombola "NO SOMOS NEUTRALES"', cover: 'notas/rombola.jpg' },
+      { file: 'Rata_blanca_mujer_amante.mp3', title: 'Rata Blanca " Mujer Amante "', cover: 'notas/Rata_blanca_mujer_amante.jpeg' },
+      
     ];
     const defaultCover = 'notas/covers/cover-default.png';
     const list = document.getElementById('list');
