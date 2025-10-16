@@ -1,4 +1,4 @@
-const fechaLimite = new Date("2024-07-30");
+const fechaLimite = new Date("2026-07-30");
 const hoy = new Date();
 
 if (hoy > fechaLimite) {
@@ -46,3 +46,4 @@ if (hoy > fechaLimite) {
     overlay.style.opacity = "1";
   }, 100);
 }
+
