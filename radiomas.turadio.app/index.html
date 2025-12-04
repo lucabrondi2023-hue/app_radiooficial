@@ -51,33 +51,37 @@
     </pwa-install>
   </main>
   <script>
-    $(document).ready(function () {
-      $('#lunaradio').lunaradio({
-        userinterface: 'big',
-        backgroundcolor: 'rgba(0,0,0,0)',
-        fontcolor: '#ffffff',
-        hightlightcolor: '#ff0000',
-        fontname: 'Roboto',
-        radioname: 'Radio en vivo!',
-        scroll: 'true',
-        coverimage: 'logo.png',
-        onlycoverimage: 'true',
-        coverstyle: 'animated',
-        usevisualizer: 'real',
-        visualizertype: '8',
-        itunestoken: '',
-        metadatatechnic: 'stream-icy-meta',
-        ownmetadataurl: '',
-        streamurl: 'https://server.streamcasthd.com/8738/stream',
-        streamtype: 'shoutcast2',
-        shoutcastpath: '',
-        shoutcastid: '1',
-        metadatainterval: 20000,
-        volume: 100,
-        debug: 'false'
-      });
+  $(document).ready(function () {
+    $('#lunaradio').lunaradio({
+      userinterface: 'big',
+      backgroundcolor: 'rgba(0,0,0,0)',
+      fontcolor: '#ffffff',
+      hightlightcolor: '#ff0000',
+      fontname: 'Roboto',
+      radioname: 'Radio en vivo!',
+      scroll: 'true',
+      coverimage: 'logo.png',
+      onlycoverimage: 'true',
+      coverstyle: 'animated',
+      usevisualizer: 'real',
+      visualizertype: '8',
+      itunestoken: '',
+      metadatatechnic: 'stream-icy-meta',
+      ownmetadataurl: '',
+
+      /* 🔥 STREAM CONFIGURADO CORRECTAMENTE */
+      streamurl: 'https://sslstream.proxyradio.app/212.84.160.3/5604/',
+      streamtype: 'shoutcast1',
+      shoutcastpath: '',
+      shoutcastid: '1',
+
+      metadatainterval: 20000,
+      volume: 100,
+      debug: 'false'
     });
-  </script>
+  });
+</script>
+
 
 <a href="#" id="pwaInstallBtn" class="fa-solid fa-download" title="Instalar o Descargar App"></a>
 
