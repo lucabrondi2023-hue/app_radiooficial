@@ -165,27 +165,26 @@
   <!-- SCRIPTS -->
   <script>
     // ===== LUNARADIO =====
-    $(document).ready(() => {
-      $('#lunaradio').lunaradio({
-        userinterface:'big',
-        backgroundcolor:'rgba(0,0,0,0)',
-        fontcolor:'#ffffff',
-        hightlightcolor:'#ff0000',
-        fontname:'Roboto',
-        radioname:'Radio en vivo!',
-        scroll:'true',
-        coverimage:'logo.png',
-        onlycoverimage:'true',
-        coverstyle:'animated',
-        usevisualizer:'real',
-        visualizertype:'8',
-        streamurl: 'http://212.84.160.3:5604/stream',
-        streamtype:'shoutcast',
-        shoutcastid:'1',
-        metadatainterval:20000,
-        volume:100
-      });
-    });
+    $('#lunaradio').lunaradio({
+  userinterface: 'big',
+  backgroundcolor: 'rgba(0,0,0,0)',
+  fontcolor: '#ffffff',
+  hightlightcolor: '#ff0000',
+  fontname: 'Roboto',
+  radioname: 'Radio en vivo!',
+  scroll: 'true',
+  coverimage: 'logo.png',
+  onlycoverimage: 'true',
+  coverstyle: 'animated',
+  usevisualizer: 'real',
+  visualizertype: '8',
+  streamurl: 'https://sslstream.proxyradio.app/212.84.160.3/5604/stream',
+  streamtype: 'shoutcast2',
+  shoutcastid: '1',
+  metadatainterval: 20000,
+  volume: 100
+});
+
 
 
     // ===== CHAT BOT =====
@@ -259,6 +258,7 @@
 
 </body>
 </html>
+
 
 
 
